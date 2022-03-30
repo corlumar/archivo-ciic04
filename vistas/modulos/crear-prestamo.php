@@ -87,16 +87,16 @@ if($_SESSION["perfil"] == "Especial"){
                     $item = null;
                     $valor = null;
 
-                    $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
+                    $prestamos = ControladorVentas::ctrMostrarVentas($item, $valor);
 
-                    if(!$ventas){
+                    if(!$prestamos){
 
                       echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="10001" readonly>';
                   
 
                     }else{
 
-                      foreach ($ventas as $key => $value) {
+                      foreach ($prestamos as $key => $value) {
                         
                         
                       
@@ -137,9 +137,9 @@ if($_SESSION["perfil"] == "Especial"){
                       $item = null;
                       $valor = null;
 
-                      $categorias = ControladorClientes::ctrMostrarClientes($item, $valor);
+                      $componentes = ControladorBeneficiarios::ctrMostrarBeneficiarios($item, $valor);
 
-                       foreach ($categorias as $key => $value) {
+                       foreach ($componentes as $key => $value) {
 
                          echo '<option value="'.$value["id"].'">'.$value["nombre"].'</option>';
 
@@ -165,7 +165,7 @@ if($_SESSION["perfil"] == "Especial"){
 
                 </div>
 
-                <input type="hidden" id="listaProductos" name="listaProductos">
+                <input type="hidden" id="listaExpedientes" name="listaExpedientes">
 
                 <!--=====================================
                 BOTÓN PARA AGREGAR PRODUCTO
@@ -471,7 +471,7 @@ MODAL AGREGAR CLIENTE
 
       <?php
 
-        $crearCliente = new ControladorClientes();
+        $crearCliente = new ControladorBeneficiarios();
         $crearCliente -> ctrCrearCliente();
 
       ?>

@@ -3,13 +3,13 @@
 $item = null;
 $valor = null;
 
-$ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
+$prestamos = ControladorVentas::ctrMostrarVentas($item, $valor);
 $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
 
 $arrayVendedores = array();
 $arraylistaVendedores = array();
 
-foreach ($ventas as $key => $valueVentas) {
+foreach ($prestamos as $key => $valueVentas) {
 
   foreach ($usuarios as $key => $valueUsuarios) {
 
@@ -86,7 +86,7 @@ var bar = new Morris.Bar({
   barColors: ['#0af'],
   xkey: 'y',
   ykeys: ['a'],
-  labels: ['ventas'],
+  labels: ['prestamos'],
   preUnits: '$',
   hideHover: 'auto'
 });

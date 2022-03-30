@@ -79,7 +79,7 @@ if($_SESSION["perfil"] == "Especial"){
           $item = null;
           $valor = null;
 
-          $clientes = ControladorClientes::ctrMostrarClientes($item, $valor);
+          $clientes = ControladorBeneficiarios::ctrMostrarBeneficiarios($item, $valor);
 
           foreach ($clientes as $key => $value) {
             
@@ -276,7 +276,7 @@ MODAL AGREGAR CLIENTE
 
       <?php
 
-        $crearCliente = new ControladorClientes();
+        $crearCliente = new ControladorBeneficiarios();
         $crearCliente -> ctrCrearCliente();
 
       ?>
@@ -423,7 +423,7 @@ MODAL EDITAR CLIENTE
 
       <?php
 
-        $editarCliente = new ControladorClientes();
+        $editarCliente = new ControladorBeneficiarios();
         $editarCliente -> ctrEditarCliente();
 
       ?>
@@ -438,7 +438,7 @@ MODAL EDITAR CLIENTE
 
 <?php
 
-  $eliminarCliente = new ControladorClientes();
+  $eliminarCliente = new ControladorBeneficiarios();
   $eliminarCliente -> ctrEliminarCliente();
 
 ?>

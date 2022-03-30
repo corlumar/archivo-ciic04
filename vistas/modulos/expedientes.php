@@ -19,7 +19,7 @@ if($_SESSION["perfil"] == "Vendedor"){
     
     <h1>
       
-      Administrar productos
+      Administrar expedientes
     
     </h1>
 
@@ -27,7 +27,7 @@ if($_SESSION["perfil"] == "Vendedor"){
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar productos</li>
+      <li class="active">Administrar expedientes</li>
     
     </ol>
 
@@ -49,7 +49,7 @@ if($_SESSION["perfil"] == "Vendedor"){
 
       <div class="box-body">
         
-       <table class="table table-bordered table-striped dt-responsive tablaProductos" width="100%">
+       <table class="table table-bordered table-striped dt-responsive tablaExpedientes" width="100%">
          
         <thead>
          
@@ -59,7 +59,7 @@ if($_SESSION["perfil"] == "Vendedor"){
            <th>Imagen</th>
            <th>Código</th>
            <th>Descripción</th>
-           <th>Categoría</th>
+           <th>Componente</th>
            <th>Stock</th>
            <th>Precio de compra</th>
            <th>Precio de venta</th>
@@ -123,20 +123,20 @@ MODAL AGREGAR PRODUCTO
               
                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
 
-                <select class="form-control input-lg" id="nuevaCategoria" name="nuevaCategoria" required>
+                <select class="form-control input-lg" id="nuevaComponente" name="nuevaComponente" required>
                   
-                  <option value="">Selecionar categoría</option>
+                  <option value="">Selecionar componente</option>
 
                   <?php
 
                   $item = null;
                   $valor = null;
 
-                  $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+                  $componentes = ControladorComponentes::ctrMostrarComponentes($item, $valor);
 
-                  foreach ($categorias as $key => $value) {
+                  foreach ($componentes as $key => $value) {
                     
-                    echo '<option value="'.$value["id"].'">'.$value["categoria"].'</option>';
+                    echo '<option value="'.$value["id"].'">'.$value["componente"].'</option>';
                   }
 
                   ?>
@@ -263,7 +263,7 @@ MODAL AGREGAR PRODUCTO
 
               <p class="help-block">Peso máximo de la imagen 2MB</p>
 
-              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+              <img src="vistas/img/expedientes/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
 
             </div>
 
@@ -287,7 +287,7 @@ MODAL AGREGAR PRODUCTO
 
         <?php
 
-          $crearProducto = new ControladorProductos();
+          $crearProducto = new ControladorExpedientes();
           $crearProducto -> ctrCrearProducto();
 
         ?>  
@@ -339,9 +339,9 @@ MODAL EDITAR PRODUCTO
               
                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
 
-                <select class="form-control input-lg"  name="editarCategoria" readonly required>
+                <select class="form-control input-lg"  name="editarComponente" readonly required>
                   
-                  <option id="editarCategoria"></option>
+                  <option id="editarComponente"></option>
 
                 </select>
 
@@ -465,7 +465,7 @@ MODAL EDITAR PRODUCTO
 
               <p class="help-block">Peso máximo de la imagen 2MB</p>
 
-              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+              <img src="vistas/img/expedientes/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
 
               <input type="hidden" name="imagenActual" id="imagenActual">
 
@@ -491,7 +491,7 @@ MODAL EDITAR PRODUCTO
 
         <?php
 
-          $editarProducto = new ControladorProductos();
+          $editarProducto = new ControladorExpedientes();
           $editarProducto -> ctrEditarProducto();
 
         ?>      
@@ -504,7 +504,7 @@ MODAL EDITAR PRODUCTO
 
 <?php
 
-  $eliminarProducto = new ControladorProductos();
+  $eliminarProducto = new ControladorExpedientes();
   $eliminarProducto -> ctrEliminarProducto();
 
 ?>      

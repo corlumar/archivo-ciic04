@@ -20,7 +20,7 @@ if($_SESSION["perfil"] == "Vendedor"){
     
     <h1>
       
-      Administrar categorías
+      Administrar componentes
     
     </h1>
 
@@ -28,7 +28,7 @@ if($_SESSION["perfil"] == "Vendedor"){
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar categorías</li>
+      <li class="active">Administrar componentes</li>
     
     </ol>
 
@@ -40,9 +40,9 @@ if($_SESSION["perfil"] == "Vendedor"){
 
       <div class="box-header with-border">
   
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarCategoria">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarComponente">
           
-          Agregar categoría
+          Agregar componente
 
         </button>
 
@@ -57,7 +57,7 @@ if($_SESSION["perfil"] == "Vendedor"){
          <tr>
            
            <th style="width:10px">#</th>
-           <th>Categoria</th>
+           <th>Componente</th>
            <th>Acciones</th>
 
          </tr> 
@@ -71,25 +71,25 @@ if($_SESSION["perfil"] == "Vendedor"){
           $item = null;
           $valor = null;
 
-          $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+          $componentes = ControladorComponentes::ctrMostrarComponentes($item, $valor);
 
-          foreach ($categorias as $key => $value) {
+          foreach ($componentes as $key => $value) {
            
             echo ' <tr>
 
                     <td>'.($key+1).'</td>
 
-                    <td class="text-uppercase">'.$value["categoria"].'</td>
+                    <td class="text-uppercase">'.$value["componente"].'</td>
 
                     <td>
 
                       <div class="btn-group">
                           
-                        <button class="btn btn-warning btnEditarCategoria" idCategoria="'.$value["id"].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="fa fa-pencil"></i></button>';
+                        <button class="btn btn-warning btnEditarComponente" idComponente="'.$value["id"].'" data-toggle="modal" data-target="#modalEditarComponente"><i class="fa fa-pencil"></i></button>';
 
                         if($_SESSION["perfil"] == "Administrador"){
 
-                          echo '<button class="btn btn-danger btnEliminarCategoria" idCategoria="'.$value["id"].'"><i class="fa fa-times"></i></button>';
+                          echo '<button class="btn btn-danger btnEliminarComponente" idComponente="'.$value["id"].'"><i class="fa fa-times"></i></button>';
 
                         }
 
@@ -118,7 +118,7 @@ if($_SESSION["perfil"] == "Vendedor"){
 MODAL AGREGAR CATEGORÍA
 ======================================-->
 
-<div id="modalAgregarCategoria" class="modal fade" role="dialog">
+<div id="modalAgregarComponente" class="modal fade" role="dialog">
   
   <div class="modal-dialog">
 
@@ -134,7 +134,7 @@ MODAL AGREGAR CATEGORÍA
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Agregar categoría</h4>
+          <h4 class="modal-title">Agregar componente</h4>
 
         </div>
 
@@ -154,7 +154,7 @@ MODAL AGREGAR CATEGORÍA
               
                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevaCategoria" placeholder="Ingresar categoría" required>
+                <input type="text" class="form-control input-lg" name="nuevaComponente" placeholder="Ingresar componente" required>
 
               </div>
 
@@ -172,14 +172,14 @@ MODAL AGREGAR CATEGORÍA
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary">Guardar categoría</button>
+          <button type="submit" class="btn btn-primary">Guardar componente</button>
 
         </div>
 
         <?php
 
-          $crearCategoria = new ControladorCategorias();
-          $crearCategoria -> ctrCrearCategoria();
+          $crearComponente = new ControladorComponentes();
+          $crearComponente -> ctrCrearComponente();
 
         ?>
 
@@ -195,7 +195,7 @@ MODAL AGREGAR CATEGORÍA
 MODAL EDITAR CATEGORÍA
 ======================================-->
 
-<div id="modalEditarCategoria" class="modal fade" role="dialog">
+<div id="modalEditarComponente" class="modal fade" role="dialog">
   
   <div class="modal-dialog">
 
@@ -211,7 +211,7 @@ MODAL EDITAR CATEGORÍA
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Editar categoría</h4>
+          <h4 class="modal-title">Editar componente</h4>
 
         </div>
 
@@ -231,9 +231,9 @@ MODAL EDITAR CATEGORÍA
               
                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="editarCategoria" id="editarCategoria" required>
+                <input type="text" class="form-control input-lg" name="editarComponente" id="editarComponente" required>
 
-                 <input type="hidden"  name="idCategoria" id="idCategoria" required>
+                 <input type="hidden"  name="idComponente" id="idComponente" required>
 
               </div>
 
@@ -257,8 +257,8 @@ MODAL EDITAR CATEGORÍA
 
       <?php
 
-          $editarCategoria = new ControladorCategorias();
-          $editarCategoria -> ctrEditarCategoria();
+          $editarComponente = new ControladorComponentes();
+          $editarComponente -> ctrEditarComponente();
 
         ?> 
 
@@ -272,8 +272,8 @@ MODAL EDITAR CATEGORÍA
 
 <?php
 
-  $borrarCategoria = new ControladorCategorias();
-  $borrarCategoria -> ctrBorrarCategoria();
+  $borrarComponente = new ControladorComponentes();
+  $borrarComponente -> ctrBorrarComponente();
 
 ?>
 

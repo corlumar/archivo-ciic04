@@ -1,16 +1,16 @@
 <?php
 
-class ControladorProductos{
+class ControladorExpedientes{
 
 	/*=============================================
 	MOSTRAR PRODUCTOS
 	=============================================*/
 
-	static public function ctrMostrarProductos($item, $valor, $orden){
+	static public function ctrMostrarExpedientes($item, $valor, $orden){
 
-		$tabla = "productos";
+		$tabla = "expedientes";
 
-		$respuesta = ModeloProductos::mdlMostrarProductos($tabla, $item, $valor, $orden);
+		$respuesta = ModeloExpedientes::mdlMostrarExpedientes($tabla, $item, $valor, $orden);
 
 		return $respuesta;
 
@@ -33,7 +33,7 @@ class ControladorProductos{
 				VALIDAR IMAGEN
 				=============================================*/
 
-			   	$ruta = "vistas/img/productos/default/anonymous.png";
+			   	$ruta = "vistas/img/expedientes/default/anonymous.png";
 
 			   	if(isset($_FILES["nuevaImagen"]["tmp_name"])){
 
@@ -46,7 +46,7 @@ class ControladorProductos{
 					CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
 					=============================================*/
 
-					$directorio = "vistas/img/productos/".$_POST["nuevoCodigo"];
+					$directorio = "vistas/img/expedientes/".$_POST["nuevoCodigo"];
 
 					mkdir($directorio, 0755);
 
@@ -62,7 +62,7 @@ class ControladorProductos{
 
 						$aleatorio = mt_rand(100,999);
 
-						$ruta = "vistas/img/productos/".$_POST["nuevoCodigo"]."/".$aleatorio.".jpg";
+						$ruta = "vistas/img/expedientes/".$_POST["nuevoCodigo"]."/".$aleatorio.".jpg";
 
 						$origen = imagecreatefromjpeg($_FILES["nuevaImagen"]["tmp_name"]);						
 
@@ -82,7 +82,7 @@ class ControladorProductos{
 
 						$aleatorio = mt_rand(100,999);
 
-						$ruta = "vistas/img/productos/".$_POST["nuevoCodigo"]."/".$aleatorio.".png";
+						$ruta = "vistas/img/expedientes/".$_POST["nuevoCodigo"]."/".$aleatorio.".png";
 
 						$origen = imagecreatefrompng($_FILES["nuevaImagen"]["tmp_name"]);						
 
@@ -96,9 +96,9 @@ class ControladorProductos{
 
 				}
 
-				$tabla = "productos";
+				$tabla = "expedientes";
 
-				$datos = array("id_categoria" => $_POST["nuevaCategoria"],
+				$datos = array("id_componente" => $_POST["nuevaComponente"],
 							   "codigo" => $_POST["nuevoCodigo"],
 							   "descripcion" => $_POST["nuevaDescripcion"],
 							   "stock" => $_POST["nuevoStock"],
@@ -106,7 +106,7 @@ class ControladorProductos{
 							   "precio_venta" => $_POST["nuevoPrecioVenta"],
 							   "imagen" => $ruta);
 
-				$respuesta = ModeloProductos::mdlIngresarProducto($tabla, $datos);
+				$respuesta = ModeloExpedientes::mdlIngresarProducto($tabla, $datos);
 
 				if($respuesta == "ok"){
 
@@ -120,7 +120,7 @@ class ControladorProductos{
 							  }).then(function(result){
 										if (result.value) {
 
-										window.location = "productos";
+										window.location = "expedientes";
 
 										}
 									})
@@ -142,7 +142,7 @@ class ControladorProductos{
 						  }).then(function(result){
 							if (result.value) {
 
-							window.location = "productos";
+							window.location = "expedientes";
 
 							}
 						})
@@ -183,13 +183,13 @@ class ControladorProductos{
 					CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
 					=============================================*/
 
-					$directorio = "vistas/img/productos/".$_POST["editarCodigo"];
+					$directorio = "vistas/img/expedientes/".$_POST["editarCodigo"];
 
 					/*=============================================
 					PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
 					=============================================*/
 
-					if(!empty($_POST["imagenActual"]) && $_POST["imagenActual"] != "vistas/img/productos/default/anonymous.png"){
+					if(!empty($_POST["imagenActual"]) && $_POST["imagenActual"] != "vistas/img/expedientes/default/anonymous.png"){
 
 						unlink($_POST["imagenActual"]);
 
@@ -211,7 +211,7 @@ class ControladorProductos{
 
 						$aleatorio = mt_rand(100,999);
 
-						$ruta = "vistas/img/productos/".$_POST["editarCodigo"]."/".$aleatorio.".jpg";
+						$ruta = "vistas/img/expedientes/".$_POST["editarCodigo"]."/".$aleatorio.".jpg";
 
 						$origen = imagecreatefromjpeg($_FILES["editarImagen"]["tmp_name"]);						
 
@@ -231,7 +231,7 @@ class ControladorProductos{
 
 						$aleatorio = mt_rand(100,999);
 
-						$ruta = "vistas/img/productos/".$_POST["editarCodigo"]."/".$aleatorio.".png";
+						$ruta = "vistas/img/expedientes/".$_POST["editarCodigo"]."/".$aleatorio.".png";
 
 						$origen = imagecreatefrompng($_FILES["editarImagen"]["tmp_name"]);						
 
@@ -245,9 +245,9 @@ class ControladorProductos{
 
 				}
 
-				$tabla = "productos";
+				$tabla = "expedientes";
 
-				$datos = array("id_categoria" => $_POST["editarCategoria"],
+				$datos = array("id_componente" => $_POST["editarComponente"],
 							   "codigo" => $_POST["editarCodigo"],
 							   "descripcion" => $_POST["editarDescripcion"],
 							   "stock" => $_POST["editarStock"],
@@ -255,7 +255,7 @@ class ControladorProductos{
 							   "precio_venta" => $_POST["editarPrecioVenta"],
 							   "imagen" => $ruta);
 
-				$respuesta = ModeloProductos::mdlEditarProducto($tabla, $datos);
+				$respuesta = ModeloExpedientes::mdlEditarProducto($tabla, $datos);
 
 				if($respuesta == "ok"){
 
@@ -269,7 +269,7 @@ class ControladorProductos{
 							  }).then(function(result){
 										if (result.value) {
 
-										window.location = "productos";
+										window.location = "expedientes";
 
 										}
 									})
@@ -291,7 +291,7 @@ class ControladorProductos{
 						  }).then(function(result){
 							if (result.value) {
 
-							window.location = "productos";
+							window.location = "expedientes";
 
 							}
 						})
@@ -309,17 +309,17 @@ class ControladorProductos{
 
 		if(isset($_GET["idProducto"])){
 
-			$tabla ="productos";
+			$tabla ="expedientes";
 			$datos = $_GET["idProducto"];
 
-			if($_GET["imagen"] != "" && $_GET["imagen"] != "vistas/img/productos/default/anonymous.png"){
+			if($_GET["imagen"] != "" && $_GET["imagen"] != "vistas/img/expedientes/default/anonymous.png"){
 
 				unlink($_GET["imagen"]);
-				rmdir('vistas/img/productos/'.$_GET["codigo"]);
+				rmdir('vistas/img/expedientes/'.$_GET["codigo"]);
 
 			}
 
-			$respuesta = ModeloProductos::mdlEliminarProducto($tabla, $datos);
+			$respuesta = ModeloExpedientes::mdlEliminarProducto($tabla, $datos);
 
 			if($respuesta == "ok"){
 
@@ -333,7 +333,7 @@ class ControladorProductos{
 					  }).then(function(result){
 								if (result.value) {
 
-								window.location = "productos";
+								window.location = "expedientes";
 
 								}
 							})
@@ -352,9 +352,9 @@ class ControladorProductos{
 
 	static public function ctrMostrarSumaVentas(){
 
-		$tabla = "productos";
+		$tabla = "expedientes";
 
-		$respuesta = ModeloProductos::mdlMostrarSumaVentas($tabla);
+		$respuesta = ModeloExpedientes::mdlMostrarSumaVentas($tabla);
 
 		return $respuesta;
 

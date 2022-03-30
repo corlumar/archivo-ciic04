@@ -4,7 +4,7 @@
     
     <h1>
       
-      Administrar productos
+      Administrar expedientes
     
     </h1>
 
@@ -12,7 +12,7 @@
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar productos</li>
+      <li class="active">Administrar expedientes</li>
     
     </ol>
 
@@ -44,7 +44,7 @@
            <th>Imagen</th>
            <th>Código</th>
            <th>Descripción</th>
-           <th>Categoría</th>
+           <th>Componente</th>
            <th>Stock</th>
            <th>Precio de compra</th>
            <th>Precio de venta</th>
@@ -59,7 +59,7 @@
           
           <tr>
             <td>1</td>
-            <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px"></td>
+            <td><img src="vistas/img/expedientes/default/anonymous.png" class="img-thumbnail" width="40px"></td>
             <td>0001</td>
             <td>Lorem ipsum dolor sit amet</td>
             <td>Lorem Ipsum</td>
@@ -84,7 +84,7 @@
            <tr>
 
             <td>1</td>
-            <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px"></td>
+            <td><img src="vistas/img/expedientes/default/anonymous.png" class="img-thumbnail" width="40px"></td>
             <td>0001</td>
             <td>Lorem ipsum dolor sit amet</td>
             <td>Lorem Ipsum</td>
@@ -108,7 +108,7 @@
 
           <tr>
             <td>1</td>
-            <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px"></td>
+            <td><img src="vistas/img/expedientes/default/anonymous.png" class="img-thumbnail" width="40px"></td>
             <td>0001</td>
             <td>Lorem ipsum dolor sit amet</td>
             <td>Lorem Ipsum</td>
@@ -212,9 +212,9 @@ MODAL AGREGAR PRODUCTO
               
                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
 
-                <select class="form-control input-lg" name="nuevaCategoria">
+                <select class="form-control input-lg" name="nuevaComponente">
                   
-                  <option value="">Selecionar categoría</option>
+                  <option value="">Selecionar componente</option>
 
                   <option value="Taladros">Taladros</option>
 
@@ -316,7 +316,7 @@ MODAL AGREGAR PRODUCTO
 
               <p class="help-block">Peso máximo de la imagen 2MB</p>
 
-              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="100px">
+              <img src="vistas/img/expedientes/default/anonymous.png" class="img-thumbnail" width="100px">
 
             </div>
 

@@ -28,7 +28,7 @@ foreach ($respuesta as $key => $value) {
 	#Introducir las fechas en arrayFechas
 	array_push($arrayFechas, $fecha);
 
-	#Capturamos las ventas
+	#Capturamos las prestamos
 	$arrayVentas = array($fecha => $value["total"]);
 
 	#Sumamos los pagos que ocurrieron el mismo mes
@@ -62,7 +62,7 @@ GRÁFICO DE VENTAS
 
 	<div class="box-body border-radius-none nuevoGraficoVentas">
 
-		<div class="chart" id="line-chart-ventas" style="height: 250px;"></div>
+		<div class="chart" id="line-chart-prestamos" style="height: 250px;"></div>
 
   </div>
 
@@ -71,7 +71,7 @@ GRÁFICO DE VENTAS
 <script>
 	
  var line = new Morris.Line({
-    element          : 'line-chart-ventas',
+    element          : 'line-chart-prestamos',
     resize           : true,
     data             : [
 
@@ -81,16 +81,16 @@ GRÁFICO DE VENTAS
 
 	    foreach($noRepetirFechas as $key){
 
-	    	echo "{ y: '".$key."', ventas: ".$sumaPagosMes[$key]." },";
+	    	echo "{ y: '".$key."', prestamos: ".$sumaPagosMes[$key]." },";
 
 
 	    }
 
-	    echo "{y: '".$key."', ventas: ".$sumaPagosMes[$key]." }";
+	    echo "{y: '".$key."', prestamos: ".$sumaPagosMes[$key]." }";
 
     }else{
 
-       echo "{ y: '0', ventas: '0' }";
+       echo "{ y: '0', prestamos: '0' }";
 
     }
 
@@ -98,8 +98,8 @@ GRÁFICO DE VENTAS
 
     ],
     xkey             : 'y',
-    ykeys            : ['ventas'],
-    labels           : ['ventas'],
+    ykeys            : ['prestamos'],
+    labels           : ['prestamos'],
     lineColors       : ['#efefef'],
     lineWidth        : 2,
     hideHover        : 'auto',

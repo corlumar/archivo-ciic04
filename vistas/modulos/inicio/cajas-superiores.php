@@ -4,16 +4,16 @@ $item = null;
 $valor = null;
 $orden = "id";
 
-$ventas = ControladorVentas::ctrSumaTotalVentas();
+$prestamos = ControladorVentas::ctrSumaTotalVentas();
 
-$categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
-$totalCategorias = count($categorias);
+$componentes = ControladorComponentes::ctrMostrarComponentes($item, $valor);
+$totalComponentes = count($componentes);
 
-$clientes = ControladorClientes::ctrMostrarClientes($item, $valor);
-$totalClientes = count($clientes);
+$clientes = ControladorBeneficiarios::ctrMostrarBeneficiarios($item, $valor);
+$totalBeneficiarios = count($clientes);
 
-$productos = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
-$totalProductos = count($productos);
+$expedientes = ControladorExpedientes::ctrMostrarExpedientes($item, $valor, $orden);
+$totalExpedientes = count($expedientes);
 
 ?>
 
@@ -25,7 +25,7 @@ $totalProductos = count($productos);
     
     <div class="inner">
       
-      <h3>$<?php echo number_format($ventas["total"],2); ?></h3>
+      <h3>$<?php echo number_format($prestamos["total"],2); ?></h3>
 
       <p>Ventas</p>
     
@@ -37,7 +37,7 @@ $totalProductos = count($productos);
     
     </div>
     
-    <a href="ventas" class="small-box-footer">
+    <a href="prestamos" class="small-box-footer">
       
       Más info <i class="fa fa-arrow-circle-right"></i>
     
@@ -53,9 +53,9 @@ $totalProductos = count($productos);
     
     <div class="inner">
     
-      <h3><?php echo number_format($totalCategorias); ?></h3>
+      <h3><?php echo number_format($totalComponentes); ?></h3>
 
-      <p>Categorías</p>
+      <p>Componentes</p>
     
     </div>
     
@@ -65,7 +65,7 @@ $totalProductos = count($productos);
     
     </div>
     
-    <a href="categorias" class="small-box-footer">
+    <a href="componentes" class="small-box-footer">
       
       Más info <i class="fa fa-arrow-circle-right"></i>
     
@@ -81,9 +81,9 @@ $totalProductos = count($productos);
     
     <div class="inner">
     
-      <h3><?php echo number_format($totalClientes); ?></h3>
+      <h3><?php echo number_format($totalBeneficiarios); ?></h3>
 
-      <p>Clientes</p>
+      <p>Beneficiarios</p>
   
     </div>
     
@@ -109,9 +109,9 @@ $totalProductos = count($productos);
   
     <div class="inner">
     
-      <h3><?php echo number_format($totalProductos); ?></h3>
+      <h3><?php echo number_format($totalExpedientes); ?></h3>
 
-      <p>Productos</p>
+      <p>Expedientes</p>
     
     </div>
     
@@ -121,7 +121,7 @@ $totalProductos = count($productos);
     
     </div>
     
-    <a href="productos" class="small-box-footer">
+    <a href="expedientes" class="small-box-footer">
       
       Más info <i class="fa fa-arrow-circle-right"></i>
     

@@ -53,7 +53,7 @@
                     $itemCliente = "id";
                     $valorCliente = $venta["id_cliente"];
 
-                    $cliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
+                    $cliente = ControladorBeneficiarios::ctrMostrarBeneficiarios($itemCliente, $valorCliente);
 
                     $porcentajeImpuesto = $venta["impuesto"] * 100 / $venta["neto"];
 
@@ -113,9 +113,9 @@
                       $item = null;
                       $valor = null;
 
-                      $categorias = ControladorClientes::ctrMostrarClientes($item, $valor);
+                      $componentes = ControladorBeneficiarios::ctrMostrarBeneficiarios($item, $valor);
 
-                       foreach ($categorias as $key => $value) {
+                       foreach ($componentes as $key => $value) {
 
                          echo '<option value="'.$value["id"].'">'.$value["nombre"].'</option>';
 
@@ -139,7 +139,7 @@
 
                 <?php
 
-                $listaProducto = json_decode($venta["productos"], true);
+                $listaProducto = json_decode($venta["expedientes"], true);
 
                 foreach ($listaProducto as $key => $value) {
 
@@ -147,7 +147,7 @@
                   $valor = $value["id"];
                   $orden = "id";
 
-                  $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
+                  $respuesta = ControladorExpedientes::ctrMostrarExpedientes($item, $valor, $orden);
 
                   $stockAntiguo = $respuesta["stock"] + $value["cantidad"];
                   
@@ -191,7 +191,7 @@
 
                 </div>
 
-                <input type="hidden" id="listaProductos" name="listaProductos">
+                <input type="hidden" id="listaExpedientes" name="listaExpedientes">
 
                 <!--=====================================
                 BOTÓN PARA AGREGAR PRODUCTO
@@ -497,7 +497,7 @@ MODAL AGREGAR CLIENTE
 
       <?php
 
-        $crearCliente = new ControladorClientes();
+        $crearCliente = new ControladorBeneficiarios();
         $crearCliente -> ctrCrearCliente();
 
       ?>

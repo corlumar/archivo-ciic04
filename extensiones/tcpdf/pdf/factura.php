@@ -1,7 +1,7 @@
 <?php
 
-require_once "../../../controladores/ventas.controlador.php";
-require_once "../../../modelos/ventas.modelo.php";
+require_once "../../../controladores/prestamos.controlador.php";
+require_once "../../../modelos/prestamos.modelo.php";
 
 require_once "../../../controladores/clientes.controlador.php";
 require_once "../../../modelos/clientes.modelo.php";
@@ -9,8 +9,8 @@ require_once "../../../modelos/clientes.modelo.php";
 require_once "../../../controladores/usuarios.controlador.php";
 require_once "../../../modelos/usuarios.modelo.php";
 
-require_once "../../../controladores/productos.controlador.php";
-require_once "../../../modelos/productos.modelo.php";
+require_once "../../../controladores/expedientes.controlador.php";
+require_once "../../../modelos/expedientes.modelo.php";
 
 class imprimirFactura{
 
@@ -26,7 +26,7 @@ $valorVenta = $this->codigo;
 $respuestaVenta = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta);
 
 $fecha = substr($respuestaVenta["fecha"],0,-8);
-$productos = json_decode($respuestaVenta["productos"], true);
+$expedientes = json_decode($respuestaVenta["expedientes"], true);
 $neto = number_format($respuestaVenta["neto"],2);
 $impuesto = number_format($respuestaVenta["impuesto"],2);
 $total = number_format($respuestaVenta["total"],2);
@@ -36,7 +36,7 @@ $total = number_format($respuestaVenta["total"],2);
 $itemCliente = "id";
 $valorCliente = $respuestaVenta["id_cliente"];
 
-$respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
+$respuestaCliente = ControladorBeneficiarios::ctrMostrarBeneficiarios($itemCliente, $valorCliente);
 
 //TRAEMOS LA INFORMACIÓN DEL VENDEDOR
 
@@ -87,7 +87,7 @@ $bloque1 = <<<EOF
 					Teléfono: 300 786 52 49
 					
 					<br>
-					ventas@inventorysystem.com
+					prestamos@inventorysystem.com
 
 				</div>
 				
@@ -176,13 +176,13 @@ $pdf->writeHTML($bloque3, false, false, false, false, '');
 
 // ---------------------------------------------------------
 
-foreach ($productos as $key => $item) {
+foreach ($expedientes as $key => $item) {
 
 $itemProducto = "descripcion";
 $valorProducto = $item["descripcion"];
 $orden = null;
 
-$respuestaProducto = ControladorProductos::ctrMostrarProductos($itemProducto, $valorProducto, $orden);
+$respuestaProducto = ControladorExpedientes::ctrMostrarExpedientes($itemProducto, $valorProducto, $orden);
 
 $valorUnitario = number_format($respuestaProducto["precio_venta"], 2);
 

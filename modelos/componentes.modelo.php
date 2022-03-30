@@ -2,17 +2,17 @@
 
 require_once "conexion.php";
 
-class ModeloCategorias{
+class ModeloComponentes{
 
 	/*=============================================
-	CREAR CATEGORIA
+	CREAR Componente
 	=============================================*/
 
-	static public function mdlIngresarCategoria($tabla, $datos){
+	static public function mdlIngresarComponente($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(categoria) VALUES (:categoria)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(componente) VALUES (:componente)");
 
-		$stmt->bindParam(":categoria", $datos, PDO::PARAM_STR);
+		$stmt->bindParam(":componente", $datos, PDO::PARAM_STR);
 
 		if($stmt->execute()){
 
@@ -30,10 +30,10 @@ class ModeloCategorias{
 	}
 
 	/*=============================================
-	MOSTRAR CATEGORIAS
+	MOSTRAR ComponenteS
 	=============================================*/
 
-	static public function mdlMostrarCategorias($tabla, $item, $valor){
+	static public function mdlMostrarComponentes($tabla, $item, $valor){
 
 		if($item != null){
 
@@ -62,14 +62,14 @@ class ModeloCategorias{
 	}
 
 	/*=============================================
-	EDITAR CATEGORIA
+	EDITAR Componente
 	=============================================*/
 
-	static public function mdlEditarCategoria($tabla, $datos){
+	static public function mdlEditarComponente($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET categoria = :categoria WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET componente = :componente WHERE id = :id");
 
-		$stmt -> bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
+		$stmt -> bindParam(":componente", $datos["componente"], PDO::PARAM_STR);
 		$stmt -> bindParam(":id", $datos["id"], PDO::PARAM_INT);
 
 		if($stmt->execute()){
@@ -88,10 +88,10 @@ class ModeloCategorias{
 	}
 
 	/*=============================================
-	BORRAR CATEGORIA
+	BORRAR Componente
 	=============================================*/
 
-	static public function mdlBorrarCategoria($tabla, $datos){
+	static public function mdlBorrarComponente($tabla, $datos){
 
 		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
 

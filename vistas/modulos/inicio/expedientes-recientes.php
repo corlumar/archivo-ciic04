@@ -4,7 +4,7 @@ $item = null;
 $valor = null;
 $orden = "id";
 
-$productos = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
+$expedientes = ControladorExpedientes::ctrMostrarExpedientes($item, $valor, $orden);
 
  ?>
 
@@ -45,7 +45,7 @@ $productos = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
 
         <div class="product-img">
 
-          <img src="'.$productos[$i]["imagen"].'" alt="Product Image">
+          <img src="'.$expedientes[$i]["imagen"].'" alt="Product Image">
 
         </div>
 
@@ -53,9 +53,9 @@ $productos = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
 
           <a href="" class="product-title">
 
-            '.$productos[$i]["descripcion"].'
+            '.$expedientes[$i]["descripcion"].'
 
-            <span class="label label-warning pull-right">$'.$productos[$i]["precio_venta"].'</span>
+            <span class="label label-warning pull-right">$'.$expedientes[$i]["precio_venta"].'</span>
 
           </a>
     
@@ -73,7 +73,7 @@ $productos = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
 
   <div class="box-footer text-center">
 
-    <a href="productos" class="uppercase">Ver todos los productos</a>
+    <a href="expedientes" class="uppercase">Ver todos los expedientes</a>
   
   </div>
 

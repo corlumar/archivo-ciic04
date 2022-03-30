@@ -2,7 +2,7 @@
 
 require_once "conexion.php";
 
-class ModeloClientes{
+class ModeloBeneficiarios{
 
 	/*=============================================
 	CREAR CLIENTE
@@ -38,7 +38,7 @@ class ModeloClientes{
 	MOSTRAR CLIENTES
 	=============================================*/
 
-	static public function mdlMostrarClientes($tabla, $item, $valor){
+	static public function mdlMostrarBeneficiarios($tabla, $item, $valor){
 
 		if($item != null){
 

@@ -1,15 +1,15 @@
 /*=============================================
-EDITAR CATEGORIA
+EDITAR Componente
 =============================================*/
-$(".tablas").on("click", ".btnEditarCategoria", function(){
+$(".tablas").on("click", ".btnEditarComponente", function(){
 
-	var idCategoria = $(this).attr("idCategoria");
+	var idComponente = $(this).attr("idComponente");
 
 	var datos = new FormData();
-	datos.append("idCategoria", idCategoria);
+	datos.append("idComponente", idComponente);
 
 	$.ajax({
-		url: "ajax/categorias.ajax.php",
+		url: "ajax/componentes.ajax.php",
 		method: "POST",
       	data: datos,
       	cache: false,
@@ -18,8 +18,8 @@ $(".tablas").on("click", ".btnEditarCategoria", function(){
      	dataType:"json",
      	success: function(respuesta){
 
-     		$("#editarCategoria").val(respuesta["categoria"]);
-     		$("#idCategoria").val(respuesta["id"]);
+     		$("#editarComponente").val(respuesta["componente"]);
+     		$("#idComponente").val(respuesta["id"]);
 
      	}
 
@@ -29,26 +29,26 @@ $(".tablas").on("click", ".btnEditarCategoria", function(){
 })
 
 /*=============================================
-ELIMINAR CATEGORIA
+ELIMINAR Componente
 =============================================*/
-$(".tablas").on("click", ".btnEliminarCategoria", function(){
+$(".tablas").on("click", ".btnEliminarComponente", function(){
 
-	 var idCategoria = $(this).attr("idCategoria");
+	 var idComponente = $(this).attr("idComponente");
 
 	 swal({
-	 	title: '¿Está seguro de borrar la categoría?',
+	 	title: '¿Está seguro de borrar la componente?',
 	 	text: "¡Si no lo está puede cancelar la acción!",
 	 	type: 'warning',
 	 	showCancelButton: true,
 	 	confirmButtonColor: '#3085d6',
 	 	cancelButtonColor: '#d33',
 	 	cancelButtonText: 'Cancelar',
-	 	confirmButtonText: 'Si, borrar categoría!'
+	 	confirmButtonText: 'Si, borrar componente!'
 	 }).then(function(result){
 
 	 	if(result.value){
 
-	 		window.location = "index.php?ruta=categorias&idCategoria="+idCategoria;
+	 		window.location = "index.php?ruta=componentes&idComponente="+idComponente;
 
 	 	}
 

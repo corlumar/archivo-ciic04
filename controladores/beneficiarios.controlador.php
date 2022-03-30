@@ -1,6 +1,6 @@
 <?php
 
-class ControladorClientes{
+class ControladorBeneficiarios{
 
 	/*=============================================
 	CREAR CLIENTES
@@ -25,7 +25,7 @@ class ControladorClientes{
 					           "direccion"=>$_POST["nuevaDireccion"],
 					           "fecha_nacimiento"=>$_POST["nuevaFechaNacimiento"]);
 
-			   	$respuesta = ModeloClientes::mdlIngresarCliente($tabla, $datos);
+			   	$respuesta = ModeloBeneficiarios::mdlIngresarCliente($tabla, $datos);
 
 			   	if($respuesta == "ok"){
 
@@ -79,11 +79,11 @@ class ControladorClientes{
 	MOSTRAR CLIENTES
 	=============================================*/
 
-	static public function ctrMostrarClientes($item, $valor){
+	static public function ctrMostrarBeneficiarios($item, $valor){
 
 		$tabla = "clientes";
 
-		$respuesta = ModeloClientes::mdlMostrarClientes($tabla, $item, $valor);
+		$respuesta = ModeloBeneficiarios::mdlMostrarBeneficiarios($tabla, $item, $valor);
 
 		return $respuesta;
 
@@ -113,7 +113,7 @@ class ControladorClientes{
 					           "direccion"=>$_POST["editarDireccion"],
 					           "fecha_nacimiento"=>$_POST["editarFechaNacimiento"]);
 
-			   	$respuesta = ModeloClientes::mdlEditarCliente($tabla, $datos);
+			   	$respuesta = ModeloBeneficiarios::mdlEditarCliente($tabla, $datos);
 
 			   	if($respuesta == "ok"){
 
@@ -174,7 +174,7 @@ class ControladorClientes{
 			$tabla ="clientes";
 			$datos = $_GET["idCliente"];
 
-			$respuesta = ModeloClientes::mdlEliminarCliente($tabla, $datos);
+			$respuesta = ModeloBeneficiarios::mdlEliminarCliente($tabla, $datos);
 
 			if($respuesta == "ok"){
 

@@ -4,7 +4,7 @@
     
     <h1>
       
-      Administrar categorías
+      Administrar componentes
     
     </h1>
 
@@ -12,7 +12,7 @@
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar categorías</li>
+      <li class="active">Administrar componentes</li>
     
     </ol>
 
@@ -24,9 +24,9 @@
 
       <div class="box-header with-border">
   
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarCategoria">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarComponente">
           
-          Agregar categoría
+          Agregar componente
 
         </button>
 
@@ -41,7 +41,7 @@
          <tr>
            
            <th style="width:10px">#</th>
-           <th>Categoria</th>
+           <th>Componente</th>
            <th>Acciones</th>
 
          </tr> 
@@ -126,7 +126,7 @@
 MODAL AGREGAR USUARIO
 ======================================-->
 
-<div id="modalAgregarCategoria" class="modal fade" role="dialog">
+<div id="modalAgregarComponente" class="modal fade" role="dialog">
   
   <div class="modal-dialog">
 
@@ -142,7 +142,7 @@ MODAL AGREGAR USUARIO
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Agregar categoría</h4>
+          <h4 class="modal-title">Agregar componente</h4>
 
         </div>
 
@@ -162,7 +162,7 @@ MODAL AGREGAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevaCategoria" placeholder="Ingresar categoría" required>
+                <input type="text" class="form-control input-lg" name="nuevaComponente" placeholder="Ingresar componente" required>
 
               </div>
 
@@ -180,7 +180,7 @@ MODAL AGREGAR USUARIO
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary">Guardar categoría</button>
+          <button type="submit" class="btn btn-primary">Guardar componente</button>
 
         </div>
 

@@ -1,22 +1,22 @@
 <?php
 
-class ControladorCategorias{
+class ControladorComponentes{
 
 	/*=============================================
-	CREAR CATEGORIAS
+	CREAR ComponenteS
 	=============================================*/
 
-	static public function ctrCrearCategoria(){
+	static public function ctrCrearComponente(){
 
-		if(isset($_POST["nuevaCategoria"])){
+		if(isset($_POST["nuevaComponente"])){
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaCategoria"])){
+			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaComponente"])){
 
-				$tabla = "categorias";
+				$tabla = "componentes";
 
-				$datos = $_POST["nuevaCategoria"];
+				$datos = $_POST["nuevaComponente"];
 
-				$respuesta = ModeloCategorias::mdlIngresarCategoria($tabla, $datos);
+				$respuesta = ModeloComponentes::mdlIngresarComponente($tabla, $datos);
 
 				if($respuesta == "ok"){
 
@@ -24,13 +24,13 @@ class ControladorCategorias{
 
 					swal({
 						  type: "success",
-						  title: "La categoría ha sido guardada correctamente",
+						  title: "La componente ha sido guardada correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "categorias";
+									window.location = "componentes";
 
 									}
 								})
@@ -46,13 +46,13 @@ class ControladorCategorias{
 
 					swal({
 						  type: "error",
-						  title: "¡La categoría no puede ir vacía o llevar caracteres especiales!",
+						  title: "¡La componente no puede ir vacía o llevar caracteres especiales!",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 							if (result.value) {
 
-							window.location = "categorias";
+							window.location = "componentes";
 
 							}
 						})
@@ -66,35 +66,35 @@ class ControladorCategorias{
 	}
 
 	/*=============================================
-	MOSTRAR CATEGORIAS
+	MOSTRAR ComponenteS
 	=============================================*/
 
-	static public function ctrMostrarCategorias($item, $valor){
+	static public function ctrMostrarComponentes($item, $valor){
 
-		$tabla = "categorias";
+		$tabla = "componentes";
 
-		$respuesta = ModeloCategorias::mdlMostrarCategorias($tabla, $item, $valor);
+		$respuesta = ModeloComponentes::mdlMostrarComponentes($tabla, $item, $valor);
 
 		return $respuesta;
 	
 	}
 
 	/*=============================================
-	EDITAR CATEGORIA
+	EDITAR Componente
 	=============================================*/
 
-	static public function ctrEditarCategoria(){
+	static public function ctrEditarComponente(){
 
-		if(isset($_POST["editarCategoria"])){
+		if(isset($_POST["editarComponente"])){
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarCategoria"])){
+			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarComponente"])){
 
-				$tabla = "categorias";
+				$tabla = "componentes";
 
-				$datos = array("categoria"=>$_POST["editarCategoria"],
-							   "id"=>$_POST["idCategoria"]);
+				$datos = array("componente"=>$_POST["editarComponente"],
+							   "id"=>$_POST["idComponente"]);
 
-				$respuesta = ModeloCategorias::mdlEditarCategoria($tabla, $datos);
+				$respuesta = ModeloComponentes::mdlEditarComponente($tabla, $datos);
 
 				if($respuesta == "ok"){
 
@@ -102,13 +102,13 @@ class ControladorCategorias{
 
 					swal({
 						  type: "success",
-						  title: "La categoría ha sido cambiada correctamente",
+						  title: "La componente ha sido cambiada correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "categorias";
+									window.location = "componentes";
 
 									}
 								})
@@ -124,13 +124,13 @@ class ControladorCategorias{
 
 					swal({
 						  type: "error",
-						  title: "¡La categoría no puede ir vacía o llevar caracteres especiales!",
+						  title: "¡La componente no puede ir vacía o llevar caracteres especiales!",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 							if (result.value) {
 
-							window.location = "categorias";
+							window.location = "componentes";
 
 							}
 						})
@@ -144,17 +144,17 @@ class ControladorCategorias{
 	}
 
 	/*=============================================
-	BORRAR CATEGORIA
+	BORRAR Componente
 	=============================================*/
 
-	static public function ctrBorrarCategoria(){
+	static public function ctrBorrarComponente(){
 
-		if(isset($_GET["idCategoria"])){
+		if(isset($_GET["idComponente"])){
 
-			$tabla ="Categorias";
-			$datos = $_GET["idCategoria"];
+			$tabla ="Componentes";
+			$datos = $_GET["idComponente"];
 
-			$respuesta = ModeloCategorias::mdlBorrarCategoria($tabla, $datos);
+			$respuesta = ModeloComponentes::mdlBorrarComponente($tabla, $datos);
 
 			if($respuesta == "ok"){
 
@@ -162,13 +162,13 @@ class ControladorCategorias{
 
 					swal({
 						  type: "success",
-						  title: "La categoría ha sido borrada correctamente",
+						  title: "La componente ha sido borrada correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "categorias";
+									window.location = "componentes";
 
 									}
 								})

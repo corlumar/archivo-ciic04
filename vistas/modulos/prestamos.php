@@ -19,7 +19,7 @@ if($_SESSION["perfil"] == "Especial"){
     
     <h1>
       
-      Administrar ventas
+      Administrar prestamos
     
     </h1>
 
@@ -27,7 +27,7 @@ if($_SESSION["perfil"] == "Especial"){
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar ventas</li>
+      <li class="active">Administrar prestamos</li>
     
     </ol>
 
@@ -39,11 +39,11 @@ if($_SESSION["perfil"] == "Especial"){
 
       <div class="box-header with-border">
   
-        <a href="crear-venta">
+        <a href="crear-prestamos">
 
           <button class="btn btn-primary">
             
-            Agregar venta
+            Agregar prestamo
 
           </button>
 
@@ -70,8 +70,8 @@ if($_SESSION["perfil"] == "Especial"){
          <tr>
            
            <th style="width:10px">#</th>
-           <th>Código factura</th>
-           <th>Cliente</th>
+           <th>Código expedientes</th>
+           <th>Beneficiario</th>
            <th>Vendedor</th>
            <th>Forma de pago</th>
            <th>Neto</th>
@@ -99,7 +99,7 @@ if($_SESSION["perfil"] == "Especial"){
 
           }
 
-          $respuesta = ControladorVentas::ctrRangoFechasVentas($fechaInicial, $fechaFinal);
+          $respuesta = ControladorPrestamos::ctrRangoFechasPrestamos($fechaInicial, $fechaFinal);
 
           foreach ($respuesta as $key => $value) {
            
@@ -109,12 +109,12 @@ if($_SESSION["perfil"] == "Especial"){
 
                   <td>'.$value["codigo"].'</td>';
 
-                  $itemCliente = "id";
-                  $valorCliente = $value["id_cliente"];
+                  $itemBeneficiario = "id";
+                  $valorBeneficiario = $value["id_beneficiario"];
 
-                  $respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
+                  $respuestaBeneficiario = ControladorBeneficiarios::ctrMostrarBeneficiarios($itemBeneficiario, $valorBeneficiario);
 
-                  echo '<td>'.$respuestaCliente["nombre"].'</td>';
+                  echo '<td>'.$respuestaBeneficiario["nombre"].'</td>';
 
                   $itemUsuario = "id";
                   $valorUsuario = $value["id_vendedor"];
@@ -135,7 +135,7 @@ if($_SESSION["perfil"] == "Especial"){
 
                     <div class="btn-group">
                         
-                      <button class="btn btn-info btnImprimirFactura" codigoVenta="'.$value["codigo"].'">
+                      <button class="btn btn-info btnImprimirFactura" codigoPrestamo="'.$value["codigo"].'">
 
                         <i class="fa fa-print"></i>
 
@@ -143,9 +143,9 @@ if($_SESSION["perfil"] == "Especial"){
 
                       if($_SESSION["perfil"] == "Administrador"){
 
-                      echo '<button class="btn btn-warning btnEditarVenta" idVenta="'.$value["id"].'"><i class="fa fa-pencil"></i></button>
+                      echo '<button class="btn btn-warning btnEditarPrestamo" idPrestamo="'.$value["id"].'"><i class="fa fa-pencil"></i></button>
 
-                      <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["id"].'"><i class="fa fa-times"></i></button>';
+                      <button class="btn btn-danger btnEliminarPrestamo" idPrestamo="'.$value["id"].'"><i class="fa fa-times"></i></button>';
 
                     }
 
@@ -164,8 +164,8 @@ if($_SESSION["perfil"] == "Especial"){
 
        <?php
 
-      $eliminarVenta = new ControladorVentas();
-      $eliminarVenta -> ctrEliminarVenta();
+      $eliminarPrestamo = new ControladorPrestamo();
+      $eliminarPrestamo -> ctrEliminarPrestamo();
 
       ?>
        

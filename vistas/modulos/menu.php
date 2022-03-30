@@ -36,10 +36,10 @@
 
 			echo '<li>
 
-				<a href="categorias">
+				<a href="componentes">
 
 					<i class="fa fa-th"></i>
-					<span>Categorías</span>
+					<span>Componentes</span>
 
 				</a>
 
@@ -47,10 +47,10 @@
 
 			<li>
 
-				<a href="productos">
+				<a href="expedientes">
 
 					<i class="fa fa-product-hunt"></i>
-					<span>Productos</span>
+					<span>Expedientes</span>
 
 				</a>
 
@@ -62,10 +62,10 @@
 
 			echo '<li>
 
-				<a href="clientes">
+				<a href="beneficiarios">
 
 					<i class="fa fa-users"></i>
-					<span>Clientes</span>
+					<span>Beneficiarios</span>
 
 				</a>
 
@@ -81,7 +81,7 @@
 
 					<i class="fa fa-list-ul"></i>
 					
-					<span>Ventas</span>
+					<span>Prestamos</span>
 					
 					<span class="pull-right-container">
 					
@@ -95,10 +95,10 @@
 					
 					<li>
 
-						<a href="ventas">
+						<a href="prestamos">
 							
 							<i class="fa fa-circle-o"></i>
-							<span>Administrar ventas</span>
+							<span>Administrar prestamos</span>
 
 						</a>
 
@@ -106,10 +106,10 @@
 
 					<li>
 
-						<a href="crear-venta">
+						<a href="crear-prestamo">
 							
 							<i class="fa fa-circle-o"></i>
-							<span>Crear venta</span>
+							<span>Crear prestamo</span>
 
 						</a>
 
@@ -122,7 +122,7 @@
 						<a href="reportes">
 							
 							<i class="fa fa-circle-o"></i>
-							<span>Reporte de ventas</span>
+							<span>Reporte de prestamos</span>
 
 						</a>
 

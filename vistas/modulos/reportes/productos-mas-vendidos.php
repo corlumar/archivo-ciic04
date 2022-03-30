@@ -2,13 +2,13 @@
 
 $item = null;
 $valor = null;
-$orden = "ventas";
+$orden = "prestamos";
 
-$productos = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
+$expedientes = ControladorExpedientes::ctrMostrarExpedientes($item, $valor, $orden);
 
 $colores = array("red","green","yellow","aqua","purple","blue","cyan","magenta","orange","gold");
 
-$totalVentas = ControladorProductos::ctrMostrarSumaVentas();
+$totalVentas = ControladorExpedientes::ctrMostrarSumaVentas();
 
 
 ?>
@@ -21,7 +21,7 @@ PRODUCTOS MÁS VENDIDOS
 	
 	<div class="box-header with-border">
   
-      <h3 class="box-title">Productos más vendidos</h3>
+      <h3 class="box-title">Expedientes más vendidos</h3>
 
     </div>
 
@@ -47,7 +47,7 @@ PRODUCTOS MÁS VENDIDOS
 
 					for($i = 0; $i < 10; $i++){
 
-					echo ' <li><i class="fa fa-circle-o text-'.$colores[$i].'"></i> '.$productos[$i]["descripcion"].'</li>';
+					echo ' <li><i class="fa fa-circle-o text-'.$colores[$i].'"></i> '.$expedientes[$i]["descripcion"].'</li>';
 
 					}
 
@@ -75,11 +75,11 @@ PRODUCTOS MÁS VENDIDOS
 						 
 						 <a>
 
-						 <img src="'.$productos[$i]["imagen"].'" class="img-thumbnail" width="60px" style="margin-right:10px"> 
-						 '.$productos[$i]["descripcion"].'
+						 <img src="'.$expedientes[$i]["imagen"].'" class="img-thumbnail" width="60px" style="margin-right:10px"> 
+						 '.$expedientes[$i]["descripcion"].'
 
 						 <span class="pull-right text-'.$colores[$i].'">   
-						 '.ceil($productos[$i]["ventas"]*100/$totalVentas["total"]).'%
+						 '.ceil($expedientes[$i]["prestamos"]*100/$totalVentas["total"]).'%
 						 </span>
 							
 						 </a>
@@ -113,10 +113,10 @@ PRODUCTOS MÁS VENDIDOS
   for($i = 0; $i < 10; $i++){
 
   	echo "{
-      value    : ".$productos[$i]["ventas"].",
+      value    : ".$expedientes[$i]["prestamos"].",
       color    : '".$colores[$i]."',
       highlight: '".$colores[$i]."',
-      label    : '".$productos[$i]["descripcion"]."'
+      label    : '".$expedientes[$i]["descripcion"]."'
     },";
 
   }

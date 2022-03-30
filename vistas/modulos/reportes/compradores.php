@@ -3,28 +3,28 @@
 $item = null;
 $valor = null;
 
-$ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
-$clientes = ControladorClientes::ctrMostrarClientes($item, $valor);
+$prestamos = ControladorVentas::ctrMostrarVentas($item, $valor);
+$clientes = ControladorBeneficiarios::ctrMostrarBeneficiarios($item, $valor);
 
-$arrayClientes = array();
-$arraylistaClientes = array();
+$arrayBeneficiarios = array();
+$arraylistaBeneficiarios = array();
 
-foreach ($ventas as $key => $valueVentas) {
+foreach ($prestamos as $key => $valueVentas) {
   
-  foreach ($clientes as $key => $valueClientes) {
+  foreach ($clientes as $key => $valueBeneficiarios) {
     
-      if($valueClientes["id"] == $valueVentas["id_cliente"]){
+      if($valueBeneficiarios["id"] == $valueVentas["id_cliente"]){
 
-        #Capturamos los Clientes en un array
-        array_push($arrayClientes, $valueClientes["nombre"]);
+        #Capturamos los Beneficiarios en un array
+        array_push($arrayBeneficiarios, $valueBeneficiarios["nombre"]);
 
         #Capturamos las nombres y los valores netos en un mismo array
-        $arraylistaClientes = array($valueClientes["nombre"] => $valueVentas["neto"]);
+        $arraylistaBeneficiarios = array($valueBeneficiarios["nombre"] => $valueVentas["neto"]);
 
         #Sumamos los netos de cada cliente
-        foreach ($arraylistaClientes as $key => $value) {
+        foreach ($arraylistaBeneficiarios as $key => $value) {
           
-          $sumaTotalClientes[$key] += $value;
+          $sumaTotalBeneficiarios[$key] += $value;
         
         }
 
@@ -34,7 +34,7 @@ foreach ($ventas as $key => $valueVentas) {
 }
 
 #Evitamos repetir nombre
-$noRepetirNombres = array_unique($arrayClientes);
+$noRepetirNombres = array_unique($arrayBeneficiarios);
 
 ?>
 
@@ -73,7 +73,7 @@ var bar = new Morris.Bar({
     
     foreach($noRepetirNombres as $value){
 
-      echo "{y: '".$value."', a: '".$sumaTotalClientes[$value]."'},";
+      echo "{y: '".$value."', a: '".$sumaTotalBeneficiarios[$value]."'},";
 
     }
 
@@ -82,7 +82,7 @@ var bar = new Morris.Bar({
   barColors: ['#f6a'],
   xkey: 'y',
   ykeys: ['a'],
-  labels: ['ventas'],
+  labels: ['prestamos'],
   preUnits: '$',
   hideHover: 'auto'
 });

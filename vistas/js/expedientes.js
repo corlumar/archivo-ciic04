@@ -4,7 +4,7 @@ CARGAR LA TABLA DINÁMICA DE PRODUCTOS
 
 // $.ajax({
 
-// 	url: "ajax/datatable-productos.ajax.php",
+// 	url: "ajax/datatable-expedientes.ajax.php",
 // 	success:function(respuesta){
 		
 // 		console.log("respuesta", respuesta);
@@ -15,8 +15,8 @@ CARGAR LA TABLA DINÁMICA DE PRODUCTOS
 
 var perfilOculto = $("#perfilOculto").val();
 
-$('.tablaProductos').DataTable( {
-    "ajax": "ajax/datatable-productos.ajax.php?perfilOculto="+perfilOculto,
+$('.tablaExpedientes').DataTable( {
+    "ajax": "ajax/datatable-expedientes.ajax.php?perfilOculto="+perfilOculto,
     "deferRender": true,
 	"retrieve": true,
 	"processing": true,
@@ -50,18 +50,18 @@ $('.tablaProductos').DataTable( {
 } );
 
 /*=============================================
-CAPTURANDO LA CATEGORIA PARA ASIGNAR CÓDIGO
+CAPTURANDO LA Componente PARA ASIGNAR CÓDIGO
 =============================================*/
-$("#nuevaCategoria").change(function(){
+$("#nuevaComponente").change(function(){
 
-	var idCategoria = $(this).val();
+	var idComponente = $(this).val();
 
 	var datos = new FormData();
-  	datos.append("idCategoria", idCategoria);
+  	datos.append("idComponente", idComponente);
 
   	$.ajax({
 
-      url:"ajax/productos.ajax.php",
+      url:"ajax/expedientes.ajax.php",
       method: "POST",
       data: datos,
       cache: false,
@@ -72,7 +72,7 @@ $("#nuevaCategoria").change(function(){
 
       	if(!respuesta){
 
-      		var nuevoCodigo = idCategoria+"01";
+      		var nuevoCodigo = idComponente+"01";
       		$("#nuevoCodigo").val(nuevoCodigo);
 
       	}else{
@@ -202,7 +202,7 @@ $(".nuevaImagen").change(function(){
 EDITAR PRODUCTO
 =============================================*/
 
-$(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
+$(".tablaExpedientes tbody").on("click", "button.btnEditarProducto", function(){
 
 	var idProducto = $(this).attr("idProducto");
 	
@@ -211,7 +211,7 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
 
      $.ajax({
 
-      url:"ajax/productos.ajax.php",
+      url:"ajax/expedientes.ajax.php",
       method: "POST",
       data: datos,
       cache: false,
@@ -220,22 +220,22 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
       dataType:"json",
       success:function(respuesta){
           
-          var datosCategoria = new FormData();
-          datosCategoria.append("idCategoria",respuesta["id_categoria"]);
+          var datosComponente = new FormData();
+          datosComponente.append("idComponente",respuesta["id_componente"]);
 
            $.ajax({
 
-              url:"ajax/categorias.ajax.php",
+              url:"ajax/componentes.ajax.php",
               method: "POST",
-              data: datosCategoria,
+              data: datosComponente,
               cache: false,
               contentType: false,
               processData: false,
               dataType:"json",
               success:function(respuesta){
                   
-                  $("#editarCategoria").val(respuesta["id"]);
-                  $("#editarCategoria").html(respuesta["categoria"]);
+                  $("#editarComponente").val(respuesta["id"]);
+                  $("#editarComponente").html(respuesta["componente"]);
 
               }
 
@@ -269,7 +269,7 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
 ELIMINAR PRODUCTO
 =============================================*/
 
-$(".tablaProductos tbody").on("click", "button.btnEliminarProducto", function(){
+$(".tablaExpedientes tbody").on("click", "button.btnEliminarProducto", function(){
 
 	var idProducto = $(this).attr("idProducto");
 	var codigo = $(this).attr("codigo");
@@ -288,7 +288,7 @@ $(".tablaProductos tbody").on("click", "button.btnEliminarProducto", function(){
         }).then(function(result) {
         if (result.value) {
 
-        	window.location = "index.php?ruta=productos&idProducto="+idProducto+"&imagen="+imagen+"&codigo="+codigo;
+        	window.location = "index.php?ruta=expedientes&idProducto="+idProducto+"&imagen="+imagen+"&codigo="+codigo;
 
         }
 
