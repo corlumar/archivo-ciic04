@@ -3,7 +3,7 @@
 class ControladorComponentes{
 
 	/*=============================================
-	CREAR ComponenteS
+	CREAR COMPONENTES
 	=============================================*/
 
 	static public function ctrCrearComponente(){
@@ -24,7 +24,7 @@ class ControladorComponentes{
 
 					swal({
 						  type: "success",
-						  title: "La componente ha sido guardada correctamente",
+						  title: "La componente ha sido guardado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
@@ -46,7 +46,7 @@ class ControladorComponentes{
 
 					swal({
 						  type: "error",
-						  title: "¡La componente no puede ir vacía o llevar caracteres especiales!",
+						  title: "¡El componente no puede ir vacío o llevar caracteres especiales!",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
@@ -124,7 +124,7 @@ class ControladorComponentes{
 
 					swal({
 						  type: "error",
-						  title: "¡La componente no puede ir vacía o llevar caracteres especiales!",
+						  title: "¡El componente no puede ir vacío o llevar caracteres especiales!",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
@@ -162,7 +162,7 @@ class ControladorComponentes{
 
 					swal({
 						  type: "success",
-						  title: "La componente ha sido borrada correctamente",
+						  title: "El componente ha sido borrado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){

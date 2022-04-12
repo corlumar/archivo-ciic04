@@ -4,7 +4,7 @@
     
     <h1>
       
-      Administrar clientes
+      Administrar beneficiarios
     
     </h1>
 
@@ -12,7 +12,7 @@
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar clientes</li>
+      <li class="active">Administrar beneficiarios</li>
     
     </ol>
 
@@ -26,7 +26,7 @@
   
         <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarCliente">
           
-          Agregar cliente
+          Agregar beneficiario
 
         </button>
 

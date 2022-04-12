@@ -3,7 +3,7 @@
 class ControladorExpedientes{
 
 	/*=============================================
-	MOSTRAR PRODUCTOS
+	MOSTRAR Expedientes
 	=============================================*/
 
 	static public function ctrMostrarExpedientes($item, $valor, $orden){

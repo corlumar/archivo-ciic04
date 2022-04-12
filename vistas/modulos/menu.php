@@ -12,7 +12,7 @@
 
 				<a href="inicio">
 
-					<i class="fa fa-home"></i>
+					<i class="fa-regular fa-house"></i>
 					<span>Inicio</span>
 
 				</a>
@@ -23,7 +23,7 @@
 
 				<a href="usuarios">
 
-					<i class="fa fa-user"></i>
+					<i class="fad fa-users"></i>
 					<span>Usuarios</span>
 
 				</a>
@@ -38,7 +38,7 @@
 
 				<a href="componentes">
 
-					<i class="fa fa-th"></i>
+					<i class="far fa-th"></i>
 					<span>Componentes</span>
 
 				</a>
@@ -49,7 +49,7 @@
 
 				<a href="expedientes">
 
-					<i class="fa fa-product-hunt"></i>
+					<i class="fad fa-book-user"></i>
 					<span>Expedientes</span>
 
 				</a>
@@ -64,7 +64,7 @@
 
 				<a href="beneficiarios">
 
-					<i class="fa fa-users"></i>
+					<i class="fad fa-tractor"></i>
 					<span>Beneficiarios</span>
 
 				</a>
@@ -97,7 +97,7 @@
 
 						<a href="prestamos">
 							
-							<i class="fa fa-circle-o"></i>
+							<i class="fad fa-check-circle"></i>
 							<span>Administrar prestamos</span>
 
 						</a>
@@ -108,7 +108,7 @@
 
 						<a href="crear-prestamo">
 							
-							<i class="fa fa-circle-o"></i>
+							<i class="fal fa-check-circle"></i>
 							<span>Crear prestamo</span>
 
 						</a>
@@ -121,7 +121,7 @@
 
 						<a href="reportes">
 							
-							<i class="fa fa-circle-o"></i>
+							<i class="fas fa-file-chart-line"></i>
 							<span>Reporte de prestamos</span>
 
 						</a>

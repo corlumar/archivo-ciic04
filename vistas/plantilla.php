@@ -11,12 +11,12 @@ session_start();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Inventory System</title>
+  <title>Archivo CIIC04</title>
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-  <link rel="icon" href="vistas/img/plantilla/icono-negro.png">
+  <link rel="icon" href="vistas/img/plantilla/logos/altepetl_150.png">
 
    <!--=====================================
   PLUGINS DE CSS
@@ -68,6 +68,9 @@ session_start();
   
   <!-- AdminLTE App -->
   <script src="vistas/dist/js/adminlte.min.js"></script>
+
+  <!-- FontAwesome  -->
+  <script src="https://kit.fontawesome.com/52f8a7dee0.js"></script>
 
   <!-- DataTables -->
   <script src="vistas/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -138,12 +141,12 @@ CUERPO DOCUMENTO
 
       if($_GET["ruta"] == "inicio" ||
          $_GET["ruta"] == "usuarios" ||
-         $_GET["ruta"] == "categorias" ||
-         $_GET["ruta"] == "productos" ||
-         $_GET["ruta"] == "clientes" ||
-         $_GET["ruta"] == "ventas" ||
-         $_GET["ruta"] == "crear-venta" ||
-         $_GET["ruta"] == "editar-venta" ||
+         $_GET["ruta"] == "componentes" ||
+         $_GET["ruta"] == "expedientes" ||
+         $_GET["ruta"] == "beneficiarioss" ||
+         $_GET["ruta"] == "prestamos" ||
+         $_GET["ruta"] == "crear-prestamo" ||
+         $_GET["ruta"] == "editar-prestamo" ||
          $_GET["ruta"] == "reportes" ||
          $_GET["ruta"] == "salir"){
 
@@ -180,10 +183,10 @@ CUERPO DOCUMENTO
 
 <script src="vistas/js/plantilla.js"></script>
 <script src="vistas/js/usuarios.js"></script>
-<script src="vistas/js/categorias.js"></script>
-<script src="vistas/js/productos.js"></script>
-<script src="vistas/js/clientes.js"></script>
-<script src="vistas/js/ventas.js"></script>
+<script src="vistas/js/componentes.js"></script>
+<script src="vistas/js/expedientes.js"></script>
+<script src="vistas/js/beneficiarios.js"></script>
+<script src="vistas/js/prestamos.js"></script>
 <script src="vistas/js/reportes.js"></script>
 
 </body>

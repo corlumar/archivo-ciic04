@@ -4,7 +4,7 @@ CARGAR LA TABLA DINÁMICA DE VENTAS
 
 // $.ajax({
 
-// 	url: "ajax/datatable-prestamos.ajax.php",
+// 	url: "ajax/datatable-ventas.ajax.php",
 // 	success:function(respuesta){
 		
 // 		console.log("respuesta", respuesta);
@@ -14,7 +14,7 @@ CARGAR LA TABLA DINÁMICA DE VENTAS
 // })// 
 
 $('.tablaVentas').DataTable( {
-    "ajax": "ajax/datatable-prestamos.ajax.php",
+    "ajax": "ajax/datatable-ventas.ajax.php",
     "deferRender": true,
 	"retrieve": true,
 	"processing": true,
@@ -64,7 +64,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
      $.ajax({
 
-     	url:"ajax/expedientes.ajax.php",
+     	url:"ajax/productos.ajax.php",
       	method: "POST",
       	data: datos,
       	cache: false,
@@ -147,7 +147,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
 	        // AGRUPAR PRODUCTOS EN FORMATO JSON
 
-	        listarExpedientes()
+	        listarProductos()
 
 	        // PONER FORMATO AL PRECIO DE LOS PRODUCTOS
 
@@ -170,12 +170,12 @@ $(".tablaVentas").on("draw.dt", function(){
 
 	if(localStorage.getItem("quitarProducto") != null){
 
-		var listaIdExpedientes = JSON.parse(localStorage.getItem("quitarProducto"));
+		var listaIdProductos = JSON.parse(localStorage.getItem("quitarProducto"));
 
-		for(var i = 0; i < listaIdExpedientes.length; i++){
+		for(var i = 0; i < listaIdProductos.length; i++){
 
-			$("button.recuperarBoton[idProducto='"+listaIdExpedientes[i]["idProducto"]+"']").removeClass('btn-default');
-			$("button.recuperarBoton[idProducto='"+listaIdExpedientes[i]["idProducto"]+"']").addClass('btn-primary agregarProducto');
+			$("button.recuperarBoton[idProducto='"+listaIdProductos[i]["idProducto"]+"']").removeClass('btn-default');
+			$("button.recuperarBoton[idProducto='"+listaIdProductos[i]["idProducto"]+"']").addClass('btn-primary agregarProducto');
 
 		}
 
@@ -241,7 +241,7 @@ $(".formularioVenta").on("click", "button.quitarProducto", function(){
 
         // AGRUPAR PRODUCTOS EN FORMATO JSON
 
-        listarExpedientes()
+        listarProductos()
 
 	}
 
@@ -258,11 +258,11 @@ $(".btnAgregarProducto").click(function(){
 	numProducto ++;
 
 	var datos = new FormData();
-	datos.append("traerExpedientes", "ok");
+	datos.append("traerProductos", "ok");
 
 	$.ajax({
 
-		url:"ajax/expedientes.ajax.php",
+		url:"ajax/productos.ajax.php",
       	method: "POST",
       	data: datos,
       	cache: false,
@@ -377,7 +377,7 @@ $(".formularioVenta").on("change", "select.nuevaDescripcionProducto", function()
 
 	  $.ajax({
 
-     	url:"ajax/expedientes.ajax.php",
+     	url:"ajax/productos.ajax.php",
       	method: "POST",
       	data: datos,
       	cache: false,
@@ -394,7 +394,7 @@ $(".formularioVenta").on("change", "select.nuevaDescripcionProducto", function()
 
   	      // AGRUPAR PRODUCTOS EN FORMATO JSON
 
-	        listarExpedientes()
+	        listarProductos()
 
       	}
 
@@ -454,7 +454,7 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function(){
 
     // AGRUPAR PRODUCTOS EN FORMATO JSON
 
-    listarExpedientes()
+    listarProductos()
 
 })
 
@@ -637,9 +637,9 @@ $(".formularioVenta").on("change", "input#nuevoCodigoTransaccion", function(){
 LISTAR TODOS LOS PRODUCTOS
 =============================================*/
 
-function listarExpedientes(){
+function listarProductos(){
 
-	var listaExpedientes = [];
+	var listaProductos = [];
 
 	var descripcion = $(".nuevaDescripcionProducto");
 
@@ -649,7 +649,7 @@ function listarExpedientes(){
 
 	for(var i = 0; i < descripcion.length; i++){
 
-		listaExpedientes.push({ "id" : $(descripcion[i]).attr("idProducto"), 
+		listaProductos.push({ "id" : $(descripcion[i]).attr("idProducto"), 
 							  "descripcion" : $(descripcion[i]).val(),
 							  "cantidad" : $(cantidad[i]).val(),
 							  "stock" : $(cantidad[i]).attr("nuevoStock"),
@@ -658,7 +658,7 @@ function listarExpedientes(){
 
 	}
 
-	$("#listaExpedientes").val(JSON.stringify(listaExpedientes)); 
+	$("#listaProductos").val(JSON.stringify(listaProductos)); 
 
 }
 
@@ -700,17 +700,17 @@ FUNCIÓN PARA DESACTIVAR LOS BOTONES AGREGAR CUANDO EL PRODUCTO YA HABÍA SIDO S
 
 function quitarAgregarProducto(){
 
-	//Capturamos todos los id de expedientes que fueron elegidos en la venta
-	var idExpedientes = $(".quitarProducto");
+	//Capturamos todos los id de productos que fueron elegidos en la venta
+	var idProductos = $(".quitarProducto");
 
 	//Capturamos todos los botones de agregar que aparecen en la tabla
 	var botonesTabla = $(".tablaVentas tbody button.agregarProducto");
 
-	//Recorremos en un ciclo para obtener los diferentes idExpedientes que fueron agregados a la venta
-	for(var i = 0; i < idExpedientes.length; i++){
+	//Recorremos en un ciclo para obtener los diferentes idProductos que fueron agregados a la venta
+	for(var i = 0; i < idProductos.length; i++){
 
-		//Capturamos los Id de los expedientes agregados a la venta
-		var boton = $(idExpedientes[i]).attr("idProducto");
+		//Capturamos los Id de los productos agregados a la venta
+		var boton = $(idProductos[i]).attr("idProducto");
 		
 		//Hacemos un recorrido por la tabla que aparece para desactivar los botones de agregar
 		for(var j = 0; j < botonesTabla.length; j ++){
@@ -757,7 +757,7 @@ $(".tablas").on("click", ".btnEliminarVenta", function(){
       }).then(function(result){
         if (result.value) {
           
-            window.location = "index.php?ruta=prestamos&idVenta="+idVenta;
+            window.location = "index.php?ruta=ventas&idVenta="+idVenta;
         }
 
   })
@@ -804,7 +804,7 @@ $('#daterange-btn').daterangepicker(
    
    	localStorage.setItem("capturarRango", capturarRango);
 
-   	window.location = "index.php?ruta=prestamos&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal;
+   	window.location = "index.php?ruta=ventas&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal;
 
   }
 
@@ -818,7 +818,7 @@ $(".daterangepicker.opensleft .range_inputs .cancelBtn").on("click", function(){
 
 	localStorage.removeItem("capturarRango");
 	localStorage.clear();
-	window.location = "prestamos";
+	window.location = "ventas";
 })
 
 /*=============================================
@@ -861,7 +861,7 @@ $(".daterangepicker.opensleft .ranges li").on("click", function(){
 
     	localStorage.setItem("capturarRango", "Hoy");
 
-    	window.location = "index.php?ruta=prestamos&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal;
+    	window.location = "index.php?ruta=ventas&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal;
 
 	}
 

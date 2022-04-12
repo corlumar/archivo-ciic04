@@ -4,7 +4,7 @@ CARGAR LA TABLA DINÁMICA DE PRODUCTOS
 
 // $.ajax({
 
-// 	url: "ajax/datatable-expedientes.ajax.php",
+// 	url: "ajax/datatable-productos.ajax.php",
 // 	success:function(respuesta){
 		
 // 		console.log("respuesta", respuesta);
@@ -15,8 +15,8 @@ CARGAR LA TABLA DINÁMICA DE PRODUCTOS
 
 var perfilOculto = $("#perfilOculto").val();
 
-$('.tablaExpedientes').DataTable( {
-    "ajax": "ajax/datatable-expedientes.ajax.php?perfilOculto="+perfilOculto,
+$('.tablaProductos').DataTable( {
+    "ajax": "ajax/datatable-productos.ajax.php?perfilOculto="+perfilOculto,
     "deferRender": true,
 	"retrieve": true,
 	"processing": true,
@@ -50,18 +50,18 @@ $('.tablaExpedientes').DataTable( {
 } );
 
 /*=============================================
-CAPTURANDO LA Componente PARA ASIGNAR CÓDIGO
+CAPTURANDO LA CATEGORIA PARA ASIGNAR CÓDIGO
 =============================================*/
-$("#nuevaComponente").change(function(){
+$("#nuevaCategoria").change(function(){
 
-	var idComponente = $(this).val();
+	var idCategoria = $(this).val();
 
 	var datos = new FormData();
-  	datos.append("idComponente", idComponente);
+  	datos.append("idCategoria", idCategoria);
 
   	$.ajax({
 
-      url:"ajax/expedientes.ajax.php",
+      url:"ajax/productos.ajax.php",
       method: "POST",
       data: datos,
       cache: false,
@@ -72,7 +72,7 @@ $("#nuevaComponente").change(function(){
 
       	if(!respuesta){
 
-      		var nuevoCodigo = idComponente+"01";
+      		var nuevoCodigo = idCategoria+"01";
       		$("#nuevoCodigo").val(nuevoCodigo);
 
       	}else{
@@ -202,7 +202,7 @@ $(".nuevaImagen").change(function(){
 EDITAR PRODUCTO
 =============================================*/
 
-$(".tablaExpedientes tbody").on("click", "button.btnEditarProducto", function(){
+$(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
 
 	var idProducto = $(this).attr("idProducto");
 	
@@ -211,7 +211,7 @@ $(".tablaExpedientes tbody").on("click", "button.btnEditarProducto", function(){
 
      $.ajax({
 
-      url:"ajax/expedientes.ajax.php",
+      url:"ajax/productos.ajax.php",
       method: "POST",
       data: datos,
       cache: false,
@@ -220,22 +220,22 @@ $(".tablaExpedientes tbody").on("click", "button.btnEditarProducto", function(){
       dataType:"json",
       success:function(respuesta){
           
-          var datosComponente = new FormData();
-          datosComponente.append("idComponente",respuesta["id_componente"]);
+          var datosCategoria = new FormData();
+          datosCategoria.append("idCategoria",respuesta["id_categoria"]);
 
            $.ajax({
 
-              url:"ajax/componentes.ajax.php",
+              url:"ajax/categorias.ajax.php",
               method: "POST",
-              data: datosComponente,
+              data: datosCategoria,
               cache: false,
               contentType: false,
               processData: false,
               dataType:"json",
               success:function(respuesta){
                   
-                  $("#editarComponente").val(respuesta["id"]);
-                  $("#editarComponente").html(respuesta["componente"]);
+                  $("#editarCategoria").val(respuesta["id"]);
+                  $("#editarCategoria").html(respuesta["categoria"]);
 
               }
 
@@ -269,7 +269,7 @@ $(".tablaExpedientes tbody").on("click", "button.btnEditarProducto", function(){
 ELIMINAR PRODUCTO
 =============================================*/
 
-$(".tablaExpedientes tbody").on("click", "button.btnEliminarProducto", function(){
+$(".tablaProductos tbody").on("click", "button.btnEliminarProducto", function(){
 
 	var idProducto = $(this).attr("idProducto");
 	var codigo = $(this).attr("codigo");
@@ -288,7 +288,7 @@ $(".tablaExpedientes tbody").on("click", "button.btnEliminarProducto", function(
         }).then(function(result) {
         if (result.value) {
 
-        	window.location = "index.php?ruta=expedientes&idProducto="+idProducto+"&imagen="+imagen+"&codigo="+codigo;
+        	window.location = "index.php?ruta=productos&idProducto="+idProducto+"&imagen="+imagen+"&codigo="+codigo;
 
         }
 
